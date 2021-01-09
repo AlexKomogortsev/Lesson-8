@@ -2,23 +2,30 @@
 
 class ComplexNumber:
 
-    def __init__(self, num: float):
-        self.num = num
+    def __init__(self, a1: float, a2, i):
+        self.a1 = a1
+        self.a2 = a2
+        self.i = i
 
     def __str__(self):
-        return f'{self.num}'
+        return f'{self.a1} + ({self.a2} * {self.i})'
 
     def __add__(self, other):
-        return ComplexNumber(self.num + other.num)
+        self.a1 = self.a1 + other.a1
+        self.a2 = self.a2 + other.a2
+        return ComplexNumber(self.a1, self.a2, self.i)
 
     def __mul__(self, other):
-        return ComplexNumber(self.num * other.num)
+        self.a1 = self.a1 * other.a1
+        self.a2 = self.a2 * self.a2
+        return ComplexNumber(self.a1, self.a2, self.i)
 
 
 
-number_1 = ComplexNumber(-2.2563)
-number_2 = ComplexNumber(3.4875)
-number_3 = ComplexNumber(-1.21111)
-number_4 = number_1 + number_2 * number_3
-number_5 = number_4 * number_1
-print(number_5)
+number_a = ComplexNumber(-2.2563, 3.456, 'i')
+number_b = ComplexNumber(3.4875, - 2.142,  'i')
+number_c = ComplexNumber(-1.21111, - 1.2567, 'i')
+number_d = number_a + number_c
+number_e = number_c * number_b
+print(number_d)
+print(number_e)
